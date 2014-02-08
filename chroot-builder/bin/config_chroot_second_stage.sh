@@ -28,12 +28,12 @@ function configSourcesList(){
 
 #cat <<EOF
 #END > /etc/apt/sources.list
-echo "deb http://ftp.us.debian.org/debian/ wheezy main contrib non-free
-deb-src http://ftp.us.debian.org/debian/ wheezy main contrib non-free
-deb http://ftp.us.debian.org/debian/ wheezy-updates main contrib non-free
-deb-src http://ftp.us.debian.org/debian/ wheezy-updates main contrib non-free
-deb http://security.debian.org/ wheezy/updates main contrib non-free
-deb-src http://security.debian.org/ wheezy/updates main contrib non-free"\
+echo "deb http://ftp.us.debian.org/debian/ sid main contrib non-free
+deb-src http://ftp.us.debian.org/debian/ sid main contrib non-free
+#deb http://ftp.us.debian.org/debian/ wheezy-updates main contrib non-free
+#deb-src http://ftp.us.debian.org/debian/ wheezy-updates main contrib non-free
+#deb http://security.debian.org/ wheezy/updates main contrib non-free
+#deb-src http://security.debian.org/ wheezy/updates main contrib non-free"\
 >> /etc/apt/sources.list
 #END
 #EOF
@@ -69,6 +69,7 @@ function installDeps(){
     NET_TOOLS="wget"
     SYSTEM_TOOLS="mc"
     OPTIONAL_DEPS="git"
+    OSSEC_DEPS="expect libc6"
     SERVICES_DEPS="dropbear"
     NOT_NEEDED_DEPS="dialog locales vim nano less tzdata console-tools module-init-tools"
 
