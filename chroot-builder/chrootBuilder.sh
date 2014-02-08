@@ -58,8 +58,8 @@ function buildDebootstrap(){
 
 #    [ -d $CHROOT_NAME/debootsrap -o -d $CHROOT_NAME/usr/ ] ||
     [ -e $CHROOT_NAME/debootstrap/debootstrap ] || (
-	sudo debootstrap --verbose --download-only --arch $DEBOOTSTRAP_ARCH --variant=minbase --foreign wheezy $CHROOT_NAME http://ftp.es.debian.org/debian
-	sudo debootstrap --verbose --arch $DEBOOTSTRAP_ARCH --variant=minbase --foreign wheezy $CHROOT_NAME http://ftp.es.debian.org/debian || true
+	sudo debootstrap --verbose --download-only --arch $DEBOOTSTRAP_ARCH --variant=minbase --foreign sid $CHROOT_NAME http://ftp.es.debian.org/debian
+	sudo debootstrap --verbose --arch $DEBOOTSTRAP_ARCH --variant=minbase --foreign sid $CHROOT_NAME http://ftp.es.debian.org/debian || true
     )
 #    parada
 
