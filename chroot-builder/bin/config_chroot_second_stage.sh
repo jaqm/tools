@@ -68,13 +68,14 @@ function installDeps(){
     KEYBOARD_DEPS="keyboard-configuration"
     NET_TOOLS="wget"
     SYSTEM_TOOLS="mc"
-    OPTIONAL_DEPS="dropbear"
+    OPTIONAL_DEPS=""
+    SERVICES_DEPS="dropbear"
     NOT_NEEDED_DEPS="dialog locales vim nano less tzdata console-tools module-init-tools"
     ZIGBEE_DEPS="python-serial"
 
     apt-get update
 
-    apt-get install $MIN_DEPS $SYSTEM_DEPS $NETWORKING_DEPS $APT_DEPS $KEYBOARD_DEPS $NET_TOOLS $SYSTEM_TOOLS $OPTIONAL_DEPS #$NOT_NEEDED_DEPS
+    apt-get install $MIN_DEPS $SYSTEM_DEPS $NETWORKING_DEPS $APT_DEPS $KEYBOARD_DEPS $NET_TOOLS $SYSTEM_TOOLS $OPTIONAL_DEPS #$SERVICES_DEPS $NOT_NEEDED_DEPS 
 
 }
 
