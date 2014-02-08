@@ -14,6 +14,10 @@ cd $(dirname $0)
 BASEDIR=$(pwd)
 
 ##################################
+
+## ARGUMENTOS
+ARCH=$1
+
 #VARIABLES
 CHROOT_NAME=binary
 TEST_DIR=chroot
@@ -35,6 +39,9 @@ function parada(){
 
 function buildDebootstrap(){
 
+    DEBOOTSTRAP_ARCH=$1
+    [ -z $DEBOOTSTRAP_ARCH ] && DEBOOTSTRAP_ARCH=armhf
+
     mkdir $TEST_DIR || true
 
     cd $TEST_DIR
@@ -51,8 +58,8 @@ function buildDebootstrap(){
 
 #    [ -d $CHROOT_NAME/debootsrap -o -d $CHROOT_NAME/usr/ ] ||
     [ -e $CHROOT_NAME/debootstrap/debootstrap ] || (
-	sudo debootstrap --verbose --download-only --arch armhf --variant=minbase --foreign wheezy $CHROOT_NAME http://ftp.us.debian.org/debian
-	sudo debootstrap --verbose --arch armhf --variant=minbase --foreign wheezy $CHROOT_NAME http://ftp.es.debian.org/debian || true
+	sudo debootstrap --verbose --download-only --arch $DEBOOTSTRAP_ARCH --variant=minbase --foreign wheezy $CHROOT_NAME http://ftp.us.debian.org/debian
+	sudo debootstrap --verbose --arch $DEBOOTSTRAP_ARCH --variant=minbase --foreign wheezy $CHROOT_NAME http://ftp.es.debian.org/debian || true
     )
 #    parada
 
@@ -74,16 +81,18 @@ function copySecondStage2chroot(){
 
 # main(){
 
+# installDeps
 #sudo aptitude install debootstrap qemu-user-static binfmt-support
 
-buildDebootstrap
+buildDebootstrap $ARCH
 
 echo " At the end, you should see \"I: Base system installed successfully.\""
 
 parada
 copySecondStage2chroot
+
 # Compatibilidad arm
-sudo cp /usr/bin/qemu-arm-static $CHROOT_NAME/usr/bin/
+[ $ARCH == armhf ] && sudo cp /usr/bin/qemu-arm-static $CHROOT_NAME/usr/bin/
 
 #parada
 echo "DEBOOTSTRAP SECOND-STAGE:"
