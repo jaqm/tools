@@ -102,8 +102,8 @@ sudo chroot $CHROOT_NAME /debootstrap/debootstrap --second-stage
 echo "CUSTOMIZING CHROOT:"
 sudo chroot $CHROOT_NAME $DEST_SECOND_STAGE_FILENAME_CHROOT
 
-echo "Comprimiendo chroot en $CHROOT_NAME.tar.gz"
-sudo tar -czf $CHROOT_NAME.tar.gz $CHROOT_NAME
+#echo "Comprimiendo chroot en $CHROOT_NAME.tar.gz"
+#sudo tar -czf $CHROOT_NAME.tar.gz $CHROOT_NAME
 
 
 #exit 
