@@ -68,10 +68,9 @@ function installDeps(){
     KEYBOARD_DEPS="keyboard-configuration"
     NET_TOOLS="wget"
     SYSTEM_TOOLS="mc"
-    OPTIONAL_DEPS=""
+    OPTIONAL_DEPS="git"
     SERVICES_DEPS="dropbear"
     NOT_NEEDED_DEPS="dialog locales vim nano less tzdata console-tools module-init-tools"
-    ZIGBEE_DEPS="python-serial"
 
     apt-get update
 
