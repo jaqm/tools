@@ -3,12 +3,14 @@
 # Author: Jose Antonio Quevedo <joseantonio.quevedo@gmail.com>
 # GPLv2
 
+#set -x
+
 GITHUB_USER=$1
 
-for repo in $(curl https://github.com/${GITHUB_USER}/ 2>/dev/null | grep codeRepository | cut -d \" -f 2 | cut -d / -f 3);do
+# Ref: https://developer.github.com/v3/repos/
+for repo in $(curl "https://api.github.com/users/${GITHUB_USER}/repos?type=owner" 2>/dev/null | grep \"name\" | cut -d \" -f 4);do
 
-    #echo "He leido GITHUB_USER: "${GITHUB_USER}" and repo: "${repo}
-    echo "GITHUB_USER: "${GITHUB_USER}". Repo: "${repo}
+    echo "Github_USER: "${GITHUB_USER}". Repo: "${repo}
     if [ -d ${repo}/.git/ ]; then
 	cd ${repo} && git pull
 	cd - >/dev/null
