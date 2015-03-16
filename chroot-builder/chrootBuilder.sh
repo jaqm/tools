@@ -82,7 +82,7 @@ function copySecondStage2chroot(){
 # main(){
 
 # installDeps
-#sudo aptitude install debootstrap qemu-user-static binfmt-support
+sudo aptitude install debootstrap qemu-user-static binfmt-support
 
 buildDebootstrap $ARCH
 
