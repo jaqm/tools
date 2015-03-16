@@ -92,7 +92,7 @@ parada
 copySecondStage2chroot
 
 # Compatibilidad arm
-[ $ARCH == armhf ] && sudo cp /usr/bin/qemu-arm-static $CHROOT_NAME/usr/bin/
+[ "${ARCH}" = armhf ] && sudo cp /usr/bin/qemu-arm-static $CHROOT_NAME/usr/bin/
 
 #parada
 echo "DEBOOTSTRAP SECOND-STAGE:"
